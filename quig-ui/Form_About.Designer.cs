@@ -34,6 +34,7 @@ namespace quig_ui
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonOk = new System.Windows.Forms.Button();
+            this.checkBoxDebug = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -83,12 +84,26 @@ namespace quig_ui
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
+            // checkBoxDebug
+            // 
+            this.checkBoxDebug.AutoSize = true;
+            this.checkBoxDebug.Enabled = false;
+            this.checkBoxDebug.Location = new System.Drawing.Point(228, 75);
+            this.checkBoxDebug.Name = "checkBoxDebug";
+            this.checkBoxDebug.Size = new System.Drawing.Size(154, 19);
+            this.checkBoxDebug.TabIndex = 5;
+            this.checkBoxDebug.Text = "debug mode for quig-ui";
+            this.checkBoxDebug.UseVisualStyleBackColor = true;
+            this.checkBoxDebug.Visible = false;
+            this.checkBoxDebug.Click += new System.EventHandler(this.checkBoxDebug_Click);
+            // 
             // Form_About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonOk;
             this.ClientSize = new System.Drawing.Size(387, 104);
+            this.Controls.Add(this.checkBoxDebug);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -99,6 +114,8 @@ namespace quig_ui
             this.Name = "Form_About";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About...";
+            this.Load += new System.EventHandler(this.Form_About_Load);
+            this.DoubleClick += new System.EventHandler(this.Form_About_DoubleClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +128,6 @@ namespace quig_ui
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonOk;
+        private System.Windows.Forms.CheckBox checkBoxDebug;
     }
 }

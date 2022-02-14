@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
+//(C)2022 B.M.Deeal
+//TODO: put GPL3 notice here
+
 namespace quig_ui
 {
     //Holds settings for the program and any global state.
@@ -143,8 +146,11 @@ namespace quig_ui
         //set up the arguments to pass to quig itself
         public string generateArguments()
         {
+            //defaults if it can't be parsed for whatever reason
             string fullscreenSetting="--window";
             string graphicsSetting="--hard";
+            //generate the argument string
+            //TODO: I feel like there is a nicer way to do this
             switch (graphicsMode)
             {
                 case GraphicsMode.hardware:
@@ -164,7 +170,7 @@ namespace quig_ui
             return $"{codeFile} {fullscreenSetting} {graphicsSetting}";
         }
 
-        //load/save settings from the default filename
+        //overloads to load/save settings from the default filename
         public void loadSettings()
         {
             loadSettings(defaultConfigLocation);

@@ -62,7 +62,6 @@ namespace quig_ui
         //if the program is closing, ask if that's okay
         private void Form_OpenFile_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
             if (exiting)
             {
                 var form = new Form_Exit();
@@ -83,6 +82,7 @@ namespace quig_ui
         //button to run the code editor
         private void buttonEditCode_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 Process.Start(Program.settings.codeEditor, Program.settings.codeFile);
@@ -91,16 +91,27 @@ namespace quig_ui
             {
                 MessageBox.Show("Could not start the code editor!\nSelect 'Configure editor settings' and make sure the location for your code editor is correct.");
             }
+            */
+            if (!Program.runProgram(Program.settings.codeEditor, Program.settings.codeFile))
+            {
+                MessageBox.Show("Could not start the code editor!\nSelect 'Configure editor settings' and make sure the location for your code editor is correct.");
+            }
         }
 
         //button to run the game
         private void buttonPlay_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 Process.Start(Program.settings.quigLocation, Program.settings.generateArguments());
             }
             catch (Win32Exception)
+            {
+                MessageBox.Show("Could not start quig!\nSelect 'Configure quig settings' and make sure the location of quig is correct.");
+            }
+            */
+            if (!Program.runProgram(Program.settings.quigLocation, Program.settings.generateArguments()))
             {
                 MessageBox.Show("Could not start quig!\nSelect 'Configure quig settings' and make sure the location of quig is correct.");
             }
@@ -115,11 +126,17 @@ namespace quig_ui
         //button to run the graphics editor
         private void buttonEditGraphics_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 Process.Start(Program.settings.graphicsEditor, Program.settings.graphicsFile);
             }
             catch (Win32Exception)
+            {
+                MessageBox.Show("Could not start the graphics editor!\nSelect 'Configure editor settings' and make sure the location for your graphics editor is correct.");
+            }
+            */
+            if (!Program.runProgram(Program.settings.graphicsEditor, Program.settings.graphicsFile))
             {
                 MessageBox.Show("Could not start the graphics editor!\nSelect 'Configure editor settings' and make sure the location for your graphics editor is correct.");
             }
@@ -129,11 +146,17 @@ namespace quig_ui
         //TODO: make this look for the readme based on where quig is located
         private void buttonReadme_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 Process.Start(new ProcessStartInfo(@"readme.txt") { UseShellExecute=true });
             }
             catch (Win32Exception)
+            {
+                MessageBox.Show($"Could not open the quig readme.");
+            }
+            */
+            if (!Program.runFile(@".\readme.txt"))
             {
                 MessageBox.Show($"Could not open the quig readme.");
             }

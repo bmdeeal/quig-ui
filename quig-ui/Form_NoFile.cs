@@ -15,7 +15,6 @@ using System.Windows.Forms;
 
 namespace quig_ui
 {
-    
     public partial class Form_NoFile : Form
     {
         private bool exiting = true; //set this to false to close the window without ending the whole program
@@ -123,11 +122,17 @@ namespace quig_ui
         //TODO: refactor, make it so that it checks the quig directory for it
         private void buttonReadme_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 Process.Start(new ProcessStartInfo(@"readme.txt") { UseShellExecute = true });
             }
             catch (Win32Exception)
+            {
+                MessageBox.Show($"Could not open the quig readme.");
+            }
+            */
+            if (!Program.runFile(@".\readme.txt"))
             {
                 MessageBox.Show($"Could not open the quig readme.");
             }

@@ -23,5 +23,24 @@ namespace quig_ui
         {
             Close();
         }
+
+        //set status of the hidden debug toggle
+        private void Form_About_Load(object sender, EventArgs e)
+        {
+            checkBoxDebug.Checked = Program.debug;
+        }
+
+        //allow enabling debug mode for quig-ui
+        private void Form_About_DoubleClick(object sender, EventArgs e)
+        {
+            checkBoxDebug.Enabled= !checkBoxDebug.Enabled;
+            checkBoxDebug.Visible = !checkBoxDebug.Visible;
+        }
+
+        //checkbox to toggle debug mode
+        private void checkBoxDebug_Click(object sender, EventArgs e)
+        {
+            Program.debug = checkBoxDebug.Checked;
+        }
     }
 }

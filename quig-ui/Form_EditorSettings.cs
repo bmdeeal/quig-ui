@@ -9,6 +9,8 @@ using System.Windows.Forms;
 //(C)2022 B.M.Deeal
 //TODO: put GPL3 notice here
 
+//TODO: we should maybe add a way to try and find some common programs? eg, notepad++, gimp, etc
+
 namespace quig_ui
 {
     public partial class Form_EditorSettings : Form
@@ -66,7 +68,6 @@ namespace quig_ui
         }
 
         //save and exit
-        //TODO: save settings to file
         private void buttonSave_Click(object sender, EventArgs e)
         {
             Program.settings.codeEditor = textBoxCode.Text;
@@ -75,6 +76,7 @@ namespace quig_ui
             Close();
         }
 
+        //populate the form
         private void Form_EditorSettings_Load(object sender, EventArgs e)
         {
             textBoxCode.Text = Program.settings.codeEditor;
