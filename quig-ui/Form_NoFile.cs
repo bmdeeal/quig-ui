@@ -140,7 +140,10 @@ namespace quig_ui
 
         private void buttonNew_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("TODO: not implemented.");
+            MessageBox.Show("notice: functionality is incomplete and untested...");
+            var dialog = new Form_New();
+            dialog.ShowDialog();
+            //if dialog then set program.settings.code/graphicsfile and then do loadfile()
         }
     }
 }
