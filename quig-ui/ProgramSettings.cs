@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 //(C)2022 B.M.Deeal
 //TODO: put GPL3 notice here
@@ -14,7 +15,7 @@ namespace quig_ui
     //TODO: possible Linux mode if this works with Mono
     class ProgramSettings
     {
-        const string defaultConfigLocation="quig-ui.cfg";
+        string defaultConfigLocation = Path.Combine(AppContext.BaseDirectory, "quig-ui.cfg");
         //location of quig
         public string quigLocation = "quig.exe";
         //what graphics mode to use

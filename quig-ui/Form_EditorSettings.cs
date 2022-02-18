@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,8 @@ using System.Windows.Forms;
 
 //(C)2022 B.M.Deeal
 //TODO: put GPL3 notice here
-
+//TODO: should file association be on this page?
+//TODO: should there be an option to associate .quig files with quig itself, or no?
 //TODO: we should maybe add a way to try and find some common programs? eg, notepad++, gimp, etc
 
 namespace quig_ui
@@ -81,6 +83,19 @@ namespace quig_ui
         {
             textBoxCode.Text = Program.settings.codeEditor;
             textBoxGraphics.Text = Program.settings.graphicsEditor;
+        }
+
+        //button to register quig-ui ias the default .quig file handler
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            if (AssociateFile.associateQuigUi())
+            {
+                MessageBox.Show("quig-ui is now the default editor for .quig files.");
+            }
+            else
+            {
+                MessageBox.Show("Could not associate .quig files with quig-ui.");
+            }
         }
     }
 }

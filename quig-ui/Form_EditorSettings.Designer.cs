@@ -39,6 +39,7 @@ namespace quig_ui
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -65,7 +66,7 @@ namespace quig_ui
             this.textBoxCode.Location = new System.Drawing.Point(12, 42);
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(230, 23);
-            this.textBoxCode.TabIndex = 13;
+            this.textBoxCode.TabIndex = 12;
             this.textBoxCode.Text = "notepad.exe";
             // 
             // buttonCodeBrowse
@@ -73,7 +74,7 @@ namespace quig_ui
             this.buttonCodeBrowse.Location = new System.Drawing.Point(248, 42);
             this.buttonCodeBrowse.Name = "buttonCodeBrowse";
             this.buttonCodeBrowse.Size = new System.Drawing.Size(75, 23);
-            this.buttonCodeBrowse.TabIndex = 14;
+            this.buttonCodeBrowse.TabIndex = 13;
             this.buttonCodeBrowse.Text = "Browse";
             this.buttonCodeBrowse.UseVisualStyleBackColor = true;
             this.buttonCodeBrowse.Click += new System.EventHandler(this.buttonCodeBrowse_Click);
@@ -83,7 +84,7 @@ namespace quig_ui
             this.buttonGraphicsBrowse.Location = new System.Drawing.Point(248, 86);
             this.buttonGraphicsBrowse.Name = "buttonGraphicsBrowse";
             this.buttonGraphicsBrowse.Size = new System.Drawing.Size(75, 23);
-            this.buttonGraphicsBrowse.TabIndex = 17;
+            this.buttonGraphicsBrowse.TabIndex = 15;
             this.buttonGraphicsBrowse.Text = "Browse";
             this.buttonGraphicsBrowse.UseVisualStyleBackColor = true;
             this.buttonGraphicsBrowse.Click += new System.EventHandler(this.buttonGraphicsBrowse_Click);
@@ -93,7 +94,7 @@ namespace quig_ui
             this.textBoxGraphics.Location = new System.Drawing.Point(12, 86);
             this.textBoxGraphics.Name = "textBoxGraphics";
             this.textBoxGraphics.Size = new System.Drawing.Size(230, 23);
-            this.textBoxGraphics.TabIndex = 16;
+            this.textBoxGraphics.TabIndex = 14;
             this.textBoxGraphics.Text = "mspaint.exe";
             // 
             // label3
@@ -108,7 +109,7 @@ namespace quig_ui
             // buttonSave
             // 
             this.buttonSave.AutoSize = true;
-            this.buttonSave.Location = new System.Drawing.Point(12, 177);
+            this.buttonSave.Location = new System.Drawing.Point(12, 208);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(311, 25);
             this.buttonSave.TabIndex = 12;
@@ -119,7 +120,7 @@ namespace quig_ui
             // buttonCancel
             // 
             this.buttonCancel.AutoSize = true;
-            this.buttonCancel.Location = new System.Drawing.Point(12, 146);
+            this.buttonCancel.Location = new System.Drawing.Point(12, 177);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(311, 25);
             this.buttonCancel.TabIndex = 11;
@@ -130,20 +131,32 @@ namespace quig_ui
             // buttonReset
             // 
             this.buttonReset.AutoSize = true;
-            this.buttonReset.Location = new System.Drawing.Point(12, 115);
+            this.buttonReset.Location = new System.Drawing.Point(12, 146);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(311, 25);
-            this.buttonReset.TabIndex = 18;
+            this.buttonReset.TabIndex = 17;
             this.buttonReset.Text = "Reset settings to default";
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // buttonRegister
+            // 
+            this.buttonRegister.AutoSize = true;
+            this.buttonRegister.Location = new System.Drawing.Point(12, 115);
+            this.buttonRegister.Name = "buttonRegister";
+            this.buttonRegister.Size = new System.Drawing.Size(311, 25);
+            this.buttonRegister.TabIndex = 16;
+            this.buttonRegister.Text = "Associate .quig files with quig-ui";
+            this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // Form_EditorSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(336, 214);
+            this.ClientSize = new System.Drawing.Size(335, 241);
+            this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonReset);
@@ -177,5 +190,6 @@ namespace quig_ui
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Button buttonRegister;
     }
 }

@@ -27,10 +27,11 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <https://www.gnu.org/licenses/>.
 
 TODO list:
-    * add a way to associate .quig files with quig-ui (maybe even ask that on first launch?)
-    * loads of testing
-    * nice "generic" message boxes that look like the rest of the program
-    * a few refactorings for duplicated functionality
+    * maybe ask to associate .quig files with quig-ui on first launch? dunno
+    * should the settings all be on one form?
+    * loads of testing -- quig-ui seems stable enough, but I need tests to know if it is or not
+    * nicer message boxes that look like the rest of the program compared to the standard MessageBox
+    * a few refactorings for duplicated functionality/snippets
     * a few more refactorings for things that should be in different places (a bunch of stuff in this class probably shouldn't be)
     * debug mode should probably log stuff to a file
 */
@@ -45,10 +46,11 @@ namespace quig_ui
         public const int versionMajor = 1; //increment for significant changes to behavior
         public const int versionMinor = 0; //increment every time we do a -release version;.10 is bigger than .1
         public const string versionStatus = "beta"; //there are three states for each release: alpha (stuff is definitely broken), beta, release
-        public const string versionExtra = ""; //stuff like alpha1, beta2, etc
+        public const string versionExtra = "2"; //stuff like alpha1, beta2a, etc -- leave this blank if we're on release status
         public static readonly string versionString = $"{versionMajor}.{versionMinor}-{versionStatus}{versionExtra}";
 
         //debug mode toggles some extra info about exceptions mostly
+        //once we're on a full release, then we can turn this off by default
         //it can be enabled/disabled by double-clicking in the About dialog and setting the checkbox that appears
         public static bool debug = true;
 

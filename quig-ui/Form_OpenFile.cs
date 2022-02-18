@@ -143,20 +143,10 @@ namespace quig_ui
         }
 
         //button to show the readme
-        //TODO: make this look for the readme based on where quig is located
+        //TODO: make this look for the readme based on where quig is located (it currently checks where quig-ui is)
         private void buttonReadme_Click(object sender, EventArgs e)
         {
-            /*
-            try
-            {
-                Process.Start(new ProcessStartInfo(@"readme.txt") { UseShellExecute=true });
-            }
-            catch (Win32Exception)
-            {
-                MessageBox.Show($"Could not open the quig readme.");
-            }
-            */
-            if (!Program.runFile(@".\readme.txt"))
+            if (!Program.runFile(Path.Combine(AppContext.BaseDirectory, "readme.txt")))
             {
                 MessageBox.Show($"Could not open the quig readme.");
             }

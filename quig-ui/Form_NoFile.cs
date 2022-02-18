@@ -120,10 +120,10 @@ namespace quig_ui
         }
 
         //button to show the readme
-        //TODO: refactor, make it so that it checks the quig directory for it
+        //TODO: refactor, make it so that it checks the quig directory for it instead of the quig-ui directory
         private void buttonReadme_Click(object sender, EventArgs e)
         {
-            if (!Program.runFile(@".\readme.txt"))
+            if (!Program.runFile(Path.Combine(AppContext.BaseDirectory, "readme.txt")))
             {
                 MessageBox.Show($"Could not open the quig readme.");
             }

@@ -23,9 +23,10 @@ namespace quig_ui
             @"",
             @"--called every frame",
             @"function step()",
-            "\tcls(100,120,170) --clear the screen, (red, green, blue)",
-            "\ttext(\"quig-ui empty game\", 0,0, 1, 0) "+
-            "--draw text (string, x-position, y-position, scale, drawing mode [0 is white on black, 1 is black on white, 2 is white on transparent, and 3 is black on transparent])",
+            "\t--clear the screen, (red, green, blue)",
+            "\tcls(100,120,170)",
+            "\t--draw text (string, x-position, y-position, scale, drawing mode [0 is white on black, 1 is black on white, 2 is white on transparent, and 3 is black on transparent])",
+            "\ttext(\"quig-ui empty game\", 0,0, 1, 0) ",
             @"end"
         };
 
