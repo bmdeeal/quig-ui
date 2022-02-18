@@ -28,18 +28,25 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 TODO list:
     * add a way to associate .quig files with quig-ui (maybe even ask that on first launch?)
-    * creating a new empty .quig and .png file [in progress]
-    * loading a .quig file should 
     * loads of testing
     * nice "generic" message boxes that look like the rest of the program
     * a few refactorings for duplicated functionality
     * a few more refactorings for things that should be in different places (a bunch of stuff in this class probably shouldn't be)
+    * debug mode should probably log stuff to a file
 */
 namespace quig_ui
 {
     static class Program
     {
+        //program settings
         public static ProgramSettings settings=new ProgramSettings();
+
+        //program version info
+        public const int versionMajor = 1; //increment for significant changes to behavior
+        public const int versionMinor = 0; //increment every time we do a -release version;.10 is bigger than .1
+        public const string versionStatus = "beta"; //there are three states for each release: alpha (stuff is definitely broken), beta, release
+        public const string versionExtra = ""; //stuff like alpha1, beta2, etc
+        public static readonly string versionString = $"{versionMajor}.{versionMinor}-{versionStatus}{versionExtra}";
 
         //debug mode toggles some extra info about exceptions mostly
         //it can be enabled/disabled by double-clicking in the About dialog and setting the checkbox that appears
@@ -57,6 +64,7 @@ namespace quig_ui
                 gfx.Dispose();
                 bmp.Dispose();
             }
+            //for if bmp.Save fails
             catch (ExternalException ex)
             {
                 if (debug) { MessageBox.Show($"debug notice: {ex}"); }
@@ -85,7 +93,7 @@ namespace quig_ui
         //run a file, like if you double clicked it
         //ignores some exceptions that probably would occur normally, returns false if they occur
         //still lets InvalidOperationException, ArgumentNullException, and PlatformNotSupportedException through
-        //we catch FileNotFoundException but like, the docs have the least helpful statement on when it can happen or why thi particular error is thrown
+        //we catch FileNotFoundException but like, the docs have the least helpful statement on when it can happen or why this particular error is thrown
         //apparently this checks %PATH% despite operating on files -- I had the PuTTY readme show up while testing this, so take note of that, always pass a fully qualified pathname
         public static bool runFile(string name)
         {
@@ -105,14 +113,74 @@ namespace quig_ui
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //TODO: handle arguments and use Form_OpenFile if we're passed a filename
             settings.loadSettings();
-            new Form_NoFile().Show();
+            //both of these need to be true to load a game from the command line
+            var argSuccess = false; //was handling the arguments a success? were the files all found?
+            var loadingFile = false; //are we currently loading a file?
+            //read the argument
+            //TODO: we only check the first argument
+            if (args.Length > 0)
+            {
+                loadingFile = true;
+                //we accept .quig and .png files and figure the rest out, since both are needed
+                //TODO: this is repeated in like 3 places and I need to refactor it
+                if (Path.GetExtension(args[0]) == ".png")
+                {
+                    settings.graphicsFile = args[0];
+                    settings.codeFile = Path.ChangeExtension(args[0], ".quig");
+                }
+                else if (Path.GetExtension(args[0]) == ".quig")
+                {
+                    settings.codeFile = args[0];
+                    settings.graphicsFile = Path.ChangeExtension(args[0], ".png");
+                }
+                else
+                {
+                    MessageBox.Show($"error: unknown extension for '{args[0]}'!\nDid not load file.");
+                    loadingFile = false;
+                    argSuccess = false;
+                }
+            }
+            //handle loading from argument
+            if (loadingFile)
+            {
+                //check if the .quig mentioned exists
+                if (File.Exists(settings.codeFile))
+                {
+                    //check if the .png file exists
+                    if (File.Exists(settings.graphicsFile))
+                    {
+                        argSuccess = true;
+                    }
+                    //bail out (TODO: should we ask to create one?)
+                    else
+                    {
+                        MessageBox.Show($"error: cannot find '{settings.graphicsFile}'!\nDid not load game.");
+                        argSuccess = false;
+                    }
+                }
+                //bail out
+                else
+                {
+                    MessageBox.Show($"error: cannot find '{settings.codeFile}'!\nDid not load game.");
+                    argSuccess = false;
+                }
+            }
+            //show the open file
+            if (loadingFile && argSuccess)
+            {
+                new Form_OpenFile().Show();
+            }
+            //no file loaded
+            else
+            {
+                new Form_NoFile().Show();
+            }
             Application.Run();
         }
         

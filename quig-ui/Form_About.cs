@@ -24,10 +24,11 @@ namespace quig_ui
             Close();
         }
 
-        //set status of the hidden debug toggle
+        //set status of the hidden debug toggle and set up the about text
         private void Form_About_Load(object sender, EventArgs e)
         {
             checkBoxDebug.Checked = Program.debug;
+            labelVersion.Text = $"This is quig-ui, version {Program.versionString}.";
         }
 
         //allow enabling debug mode for quig-ui

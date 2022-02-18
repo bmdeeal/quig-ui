@@ -35,6 +35,7 @@ namespace quig_ui
             this.label4 = new System.Windows.Forms.Label();
             this.buttonOk = new System.Windows.Forms.Button();
             this.checkBoxDebug = new System.Windows.Forms.CheckBox();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -50,7 +51,7 @@ namespace quig_ui
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 39);
+            this.label2.Location = new System.Drawing.Point(12, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(370, 15);
             this.label2.TabIndex = 1;
@@ -59,7 +60,7 @@ namespace quig_ui
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 24);
+            this.label3.Location = new System.Drawing.Point(12, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(268, 15);
             this.label3.TabIndex = 2;
@@ -68,7 +69,7 @@ namespace quig_ui
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 54);
+            this.label4.Location = new System.Drawing.Point(12, 69);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(209, 15);
             this.label4.TabIndex = 3;
@@ -76,7 +77,7 @@ namespace quig_ui
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(12, 72);
+            this.buttonOk.Location = new System.Drawing.Point(12, 87);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 4;
@@ -88,7 +89,7 @@ namespace quig_ui
             // 
             this.checkBoxDebug.AutoSize = true;
             this.checkBoxDebug.Enabled = false;
-            this.checkBoxDebug.Location = new System.Drawing.Point(228, 75);
+            this.checkBoxDebug.Location = new System.Drawing.Point(228, 90);
             this.checkBoxDebug.Name = "checkBoxDebug";
             this.checkBoxDebug.Size = new System.Drawing.Size(154, 19);
             this.checkBoxDebug.TabIndex = 5;
@@ -97,12 +98,22 @@ namespace quig_ui
             this.checkBoxDebug.Visible = false;
             this.checkBoxDebug.Click += new System.EventHandler(this.checkBoxDebug_Click);
             // 
+            // labelVersion
+            // 
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Location = new System.Drawing.Point(12, 24);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(182, 15);
+            this.labelVersion.TabIndex = 6;
+            this.labelVersion.Text = "This is quig-ui, version x.y-status.";
+            // 
             // Form_About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonOk;
-            this.ClientSize = new System.Drawing.Size(387, 104);
+            this.ClientSize = new System.Drawing.Size(387, 118);
+            this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.checkBoxDebug);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.label4);
@@ -129,5 +140,6 @@ namespace quig_ui
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.CheckBox checkBoxDebug;
+        private System.Windows.Forms.Label labelVersion;
     }
 }

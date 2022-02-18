@@ -93,11 +93,13 @@ namespace quig_ui
             this.buttonBrowseLocation.TabIndex = 5;
             this.buttonBrowseLocation.Text = "Browse";
             this.buttonBrowseLocation.UseVisualStyleBackColor = true;
+            this.buttonBrowseLocation.Click += new System.EventHandler(this.buttonBrowseLocation_Click);
             // 
             // Form_New
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(369, 139);
             this.Controls.Add(this.buttonBrowseLocation);
             this.Controls.Add(this.buttonCancel);
@@ -105,7 +107,10 @@ namespace quig_ui
             this.Controls.Add(this.textBoxGameLocation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form_New";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form_New";
             this.ResumeLayout(false);
             this.PerformLayout();

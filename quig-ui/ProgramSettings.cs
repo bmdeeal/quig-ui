@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace quig_ui
 {
     //Holds settings for the program and any global state.
-    //TODO: load/save functions (needs testing, but works)
+    //TODO: we should explicitly force default settings in some spots; make a function that does this
     //TODO: possible Linux mode if this works with Mono
     class ProgramSettings
     {

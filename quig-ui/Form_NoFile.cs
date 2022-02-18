@@ -64,6 +64,7 @@ namespace quig_ui
             //handle a cancelled dialog
             if (fileDialog.FileName=="") { return; }
             //sort out the extensions
+            //TODO: refactor this into a function
             if (Path.GetExtension(fileDialog.FileName)==".png")
             {
                 Program.settings.graphicsFile = fileDialog.FileName;
@@ -112,7 +113,7 @@ namespace quig_ui
             }
         }
 
-        //buttton to show about text
+        //buttton to show about text and hidden debug toggle
         private void buttonAbout_Click(object sender, EventArgs e)
         {
             new Form_About().ShowDialog();
@@ -122,28 +123,27 @@ namespace quig_ui
         //TODO: refactor, make it so that it checks the quig directory for it
         private void buttonReadme_Click(object sender, EventArgs e)
         {
-            /*
-            try
-            {
-                Process.Start(new ProcessStartInfo(@"readme.txt") { UseShellExecute = true });
-            }
-            catch (Win32Exception)
-            {
-                MessageBox.Show($"Could not open the quig readme.");
-            }
-            */
             if (!Program.runFile(@".\readme.txt"))
             {
                 MessageBox.Show($"Could not open the quig readme.");
             }
         }
 
+        //button to show the dialog to make a new file
         private void buttonNew_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("notice: functionality is incomplete and untested...");
             var dialog = new Form_New();
             dialog.ShowDialog();
-            //if dialog then set program.settings.code/graphicsfile and then do loadfile()
+            if (dialog.created)
+            {
+                loadFile();
+            }
+        }
+
+        //set the verson string
+        private void Form_NoFile_Load(object sender, EventArgs e)
+        {
+            labelVersion.Text = $"This is quig-ui, version {Program.versionString}.";
         }
     }
 }

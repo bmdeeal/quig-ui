@@ -30,7 +30,7 @@ namespace quig_ui
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonOpen = new System.Windows.Forms.Button();
             this.buttonNew = new System.Windows.Forms.Button();
@@ -55,14 +55,14 @@ namespace quig_ui
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome to quig!";
             // 
-            // label2
+            // labelVersion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "This is quig-ui, version 0.1-alpha.";
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Location = new System.Drawing.Point(12, 24);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(182, 15);
+            this.labelVersion.TabIndex = 1;
+            this.labelVersion.Text = "This is quig-ui, version x.y-status.";
             // 
             // label3
             // 
@@ -190,7 +190,7 @@ namespace quig_ui
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.buttonNew);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -199,6 +199,7 @@ namespace quig_ui
             this.Text = "No file loaded - quig-ui";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_NoFile_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_NoFile_FormClosed);
+            this.Load += new System.EventHandler(this.Form_NoFile_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -209,7 +210,7 @@ namespace quig_ui
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonOpen;
         private System.Windows.Forms.Button buttonNew;
