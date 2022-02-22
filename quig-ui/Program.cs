@@ -45,8 +45,8 @@ namespace quig_ui
         //program version info
         public const int versionMajor = 1; //increment for significant changes to behavior
         public const int versionMinor = 0; //increment every time we do a -release version;.10 is bigger than .1
-        public const string versionStatus = "beta"; //there are three states for each release: alpha (stuff is definitely broken), beta, release
-        public const string versionExtra = "2"; //stuff like alpha1, beta2a, etc -- leave this blank if we're on release status
+        public const string versionStatus = "release"; //there are three states for each release: alpha (stuff is definitely broken), beta, release
+        public const string versionExtra = ""; //stuff like alpha1, beta2a, etc -- leave this blank if we're on release status
         public static readonly string versionString = $"{versionMajor}.{versionMinor}-{versionStatus}{versionExtra}";
 
         //debug mode toggles some extra info about exceptions mostly
