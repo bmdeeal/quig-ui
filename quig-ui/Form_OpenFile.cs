@@ -45,6 +45,7 @@ namespace quig_ui
         //populate the interface with what the currently loaded file is
         private void Form_OpenFile_Load(object sender, EventArgs e)
         {
+            Icon = quig_ui.Properties.Resources.Icon;
             toolStripStatusFilename.Text = $"Loaded '{Path.GetFileName(Program.settings.codeFile)}'.";
             Text = $"{Path.GetFileName(Program.settings.codeFile)} - quig-ui";
         }

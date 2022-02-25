@@ -143,6 +143,7 @@ namespace quig_ui
         //set the verson string
         private void Form_NoFile_Load(object sender, EventArgs e)
         {
+            Icon = quig_ui.Properties.Resources.Icon;
             labelVersion.Text = $"This is quig-ui, version {Program.versionString}.";
         }
     }

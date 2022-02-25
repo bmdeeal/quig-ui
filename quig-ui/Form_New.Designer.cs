@@ -111,7 +111,7 @@ namespace quig_ui
             this.MaximizeBox = false;
             this.Name = "Form_New";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form_New";
+            this.Text = "New game";
             this.ResumeLayout(false);
             this.PerformLayout();
 
