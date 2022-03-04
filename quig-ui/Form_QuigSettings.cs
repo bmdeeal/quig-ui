@@ -13,6 +13,7 @@ namespace quig_ui
 {
     public partial class Form_QuigSettings : Form
     {
+        public string lastScaleFactor = "";
         public Form_QuigSettings()
         {
             InitializeComponent();
@@ -42,6 +43,11 @@ namespace quig_ui
             }
             Program.settings.fullscreen = checkBoxFullscreen.Checked;
             Program.settings.quigLocation = textBoxQuigLocation.Text;
+            Program.settings.autoScale = radioButtonAutoScale.Checked; //we ignore if the other one is checked since radio buttons automatically handle that
+            if (Int32.TryParse(textBoxCustomScale.Text, out int tempnum))
+            {
+                Program.settings.scaleFactor = tempnum;
+            }
             Program.settings.saveSettings();
             Close();
         }
@@ -63,6 +69,17 @@ namespace quig_ui
             }
             checkBoxFullscreen.Checked = Program.settings.fullscreen;
             textBoxQuigLocation.Text = Program.settings.quigLocation;
+            textBoxCustomScale.Text = Program.settings.scaleFactor.ToString();
+            lastScaleFactor = textBoxCustomScale.Text;
+            if (Program.settings.autoScale)
+            {
+                radioButtonAutoScale.Checked = true;
+            }
+            else
+            {
+                radioButtonCustomScale.Checked = true;
+            }
+
         }
         //Allow the user to locate where quig is.
         //I originally wasn't going to make this an option, but at least at the moment, it's required.
@@ -86,6 +103,21 @@ namespace quig_ui
             checkBoxFullscreen.Checked = false;
             textBoxQuigLocation.Text = "quig.exe";
             radioButtonHardware.Checked = true;
+        }
+
+        private void textBoxCustomScale_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxCustomScale.Text != "")
+            {
+                if (Int32.TryParse(textBoxCustomScale.Text, out int result))
+                {
+                    textBoxCustomScale.Text = result.ToString();
+                }
+                else
+                {
+                    textBoxCustomScale.Text = lastScaleFactor;
+                }
+            }
         }
     }
 }

@@ -27,6 +27,7 @@ You should have received a copy of the GNU General Public License along with
 this program. If not, see <https://www.gnu.org/licenses/>.
 
 TODO list:
+    * I've managed to build this on Linux and run with Mono! I need to adjust a few things+write a script to build to make this easier.
     * maybe ask to associate .quig files with quig-ui on first launch? dunno
     * should the settings all be on one form?
     * loads of testing -- quig-ui seems stable enough, but I need tests to know if it is or not
@@ -44,8 +45,8 @@ namespace quig_ui
 
         //program version info
         public const int versionMajor = 1; //increment for significant changes to behavior
-        public const int versionMinor = 0; //increment every time we do a -release version;.10 is bigger than .1
-        public const string versionStatus = "release"; //there are three states for each release: alpha (stuff is definitely broken), beta, release
+        public const int versionMinor = 2; //increment every time we do a -release version;.10 is bigger than .1
+        public const string versionStatus = "beta"; //there are three states for each release: alpha (stuff is definitely broken), beta, release
         public const string versionExtra = ""; //stuff like alpha1, beta2a, etc -- leave this blank if we're on release status
         public static readonly string versionString = $"{versionMajor}.{versionMinor}-{versionStatus}{versionExtra}";
 

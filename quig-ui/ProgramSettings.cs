@@ -34,6 +34,8 @@ namespace quig_ui
         //file editors
         public string codeEditor = "notepad.exe"; //.quig editor
         public string graphicsEditor = "mspaint.exe"; //.png editor
+        public int scaleFactor = 2;
+        public bool autoScale = true;
 
         //Load settings from a file.
         //returns false if settings didn't load
@@ -67,6 +69,22 @@ namespace quig_ui
                         //process each pair
                         switch (keypair[0])
                         {
+                            case "@auto-scale":
+                                autoScale = keypair[1] == "True";
+                                break;
+                            case "@custom-scale":
+                                int csResult = 0;
+                                var csSuccess = int.TryParse(keypair[1], out csResult);
+                                if (csSuccess && csResult >=1)
+                                {
+                                    scaleFactor = csResult;
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Error loading config file!\nCould not parse scale factor '{keypair[1]}'.\nUsing default setting (2).");
+                                    scaleFactor = 2;
+                                }
+                                break;
                             case "@quig-location":
                                 quigLocation = keypair[1];
                                 break;
@@ -77,11 +95,11 @@ namespace quig_ui
                                 graphicsEditor = keypair[1];
                                 break;
                             case "@graphics-mode":
-                                int result = 0;
-                                var success = int.TryParse(keypair[1], out result);
-                                if (success && result >= 0 && result < 3)
+                                int gmResult = 0;
+                                var gmSuccess = int.TryParse(keypair[1], out gmResult);
+                                if (gmSuccess && gmResult >= 0 && gmResult < 3)
                                 {
-                                    graphicsMode = (GraphicsMode)result;
+                                    graphicsMode = (GraphicsMode)gmResult;
                                 }
                                 else
                                 {
@@ -136,6 +154,8 @@ namespace quig_ui
                     outputFile.WriteLine($"@graphics-editor={graphicsEditor}");
                     outputFile.WriteLine($"@graphics-mode={(int)graphicsMode}");
                     outputFile.WriteLine($"@fullscreen={fullscreen}");
+                    outputFile.WriteLine($"@auto-scale={autoScale}");
+                    outputFile.WriteLine($"@custom-scale={scaleFactor}");
                 }
             }
             catch (Exception ex)
@@ -150,6 +170,7 @@ namespace quig_ui
             //defaults if it can't be parsed for whatever reason
             string fullscreenSetting="--window";
             string graphicsSetting="--hard";
+            string scaleSetting = "--auto-scale";
             //generate the argument string
             //TODO: I feel like there is a nicer way to do this
             switch (graphicsMode)
@@ -168,7 +189,11 @@ namespace quig_ui
             {
                 fullscreenSetting = "--fullscreen";
             }
-            return $"{codeFile} {fullscreenSetting} {graphicsSetting}";
+            if (!autoScale)
+            {
+                scaleSetting = $"--scale {scaleFactor}";
+            }
+            return $"{codeFile} {fullscreenSetting} {graphicsSetting} {scaleSetting}";
         }
 
         //overloads to load/save settings from the default filename

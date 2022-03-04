@@ -41,6 +41,14 @@ namespace quig_ui
             this.buttonQuigBrowse = new System.Windows.Forms.Button();
             this.textBoxQuigLocation = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxCustomScale = new System.Windows.Forms.TextBox();
+            this.radioButtonCustomScale = new System.Windows.Forms.RadioButton();
+            this.radioButtonAutoScale = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +64,7 @@ namespace quig_ui
             // radioButtonHardware
             // 
             this.radioButtonHardware.AutoSize = true;
-            this.radioButtonHardware.Location = new System.Drawing.Point(12, 42);
+            this.radioButtonHardware.Location = new System.Drawing.Point(3, 3);
             this.radioButtonHardware.Name = "radioButtonHardware";
             this.radioButtonHardware.Size = new System.Drawing.Size(149, 19);
             this.radioButtonHardware.TabIndex = 2;
@@ -67,7 +75,7 @@ namespace quig_ui
             // radioButtonHardwareVSync
             // 
             this.radioButtonHardwareVSync.AutoSize = true;
-            this.radioButtonHardwareVSync.Location = new System.Drawing.Point(12, 67);
+            this.radioButtonHardwareVSync.Location = new System.Drawing.Point(3, 28);
             this.radioButtonHardwareVSync.Name = "radioButtonHardwareVSync";
             this.radioButtonHardwareVSync.Size = new System.Drawing.Size(234, 19);
             this.radioButtonHardwareVSync.TabIndex = 3;
@@ -78,7 +86,7 @@ namespace quig_ui
             // radioButtonSoftware
             // 
             this.radioButtonSoftware.AutoSize = true;
-            this.radioButtonSoftware.Location = new System.Drawing.Point(12, 92);
+            this.radioButtonSoftware.Location = new System.Drawing.Point(3, 53);
             this.radioButtonSoftware.Name = "radioButtonSoftware";
             this.radioButtonSoftware.Size = new System.Drawing.Size(202, 19);
             this.radioButtonSoftware.TabIndex = 4;
@@ -89,7 +97,7 @@ namespace quig_ui
             // checkBoxFullscreen
             // 
             this.checkBoxFullscreen.AutoSize = true;
-            this.checkBoxFullscreen.Location = new System.Drawing.Point(12, 117);
+            this.checkBoxFullscreen.Location = new System.Drawing.Point(3, 53);
             this.checkBoxFullscreen.Name = "checkBoxFullscreen";
             this.checkBoxFullscreen.Size = new System.Drawing.Size(114, 19);
             this.checkBoxFullscreen.TabIndex = 5;
@@ -108,9 +116,9 @@ namespace quig_ui
             // buttonReset
             // 
             this.buttonReset.AutoSize = true;
-            this.buttonReset.Location = new System.Drawing.Point(12, 186);
+            this.buttonReset.Location = new System.Drawing.Point(12, 276);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(234, 25);
+            this.buttonReset.Size = new System.Drawing.Size(242, 25);
             this.buttonReset.TabIndex = 7;
             this.buttonReset.Text = "Reset settings to default";
             this.buttonReset.UseVisualStyleBackColor = true;
@@ -119,9 +127,9 @@ namespace quig_ui
             // buttonCancel
             // 
             this.buttonCancel.AutoSize = true;
-            this.buttonCancel.Location = new System.Drawing.Point(12, 217);
+            this.buttonCancel.Location = new System.Drawing.Point(12, 307);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(234, 25);
+            this.buttonCancel.Size = new System.Drawing.Size(242, 25);
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel changes";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -130,9 +138,9 @@ namespace quig_ui
             // buttonSave
             // 
             this.buttonSave.AutoSize = true;
-            this.buttonSave.Location = new System.Drawing.Point(12, 248);
+            this.buttonSave.Location = new System.Drawing.Point(12, 338);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(234, 25);
+            this.buttonSave.Size = new System.Drawing.Size(242, 25);
             this.buttonSave.TabIndex = 9;
             this.buttonSave.Text = "Save new settings";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -140,9 +148,9 @@ namespace quig_ui
             // 
             // buttonQuigBrowse
             // 
-            this.buttonQuigBrowse.Location = new System.Drawing.Point(171, 157);
+            this.buttonQuigBrowse.Location = new System.Drawing.Point(171, 247);
             this.buttonQuigBrowse.Name = "buttonQuigBrowse";
-            this.buttonQuigBrowse.Size = new System.Drawing.Size(75, 23);
+            this.buttonQuigBrowse.Size = new System.Drawing.Size(83, 23);
             this.buttonQuigBrowse.TabIndex = 17;
             this.buttonQuigBrowse.Text = "Browse";
             this.buttonQuigBrowse.UseVisualStyleBackColor = true;
@@ -150,7 +158,7 @@ namespace quig_ui
             // 
             // textBoxQuigLocation
             // 
-            this.textBoxQuigLocation.Location = new System.Drawing.Point(12, 157);
+            this.textBoxQuigLocation.Location = new System.Drawing.Point(12, 247);
             this.textBoxQuigLocation.Name = "textBoxQuigLocation";
             this.textBoxQuigLocation.Size = new System.Drawing.Size(153, 23);
             this.textBoxQuigLocation.TabIndex = 16;
@@ -159,18 +167,82 @@ namespace quig_ui
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 139);
+            this.label3.Location = new System.Drawing.Point(12, 229);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 15);
             this.label3.TabIndex = 15;
             this.label3.Text = "Location of quig:";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioButtonHardware);
+            this.panel1.Controls.Add(this.radioButtonHardwareVSync);
+            this.panel1.Controls.Add(this.radioButtonSoftware);
+            this.panel1.Location = new System.Drawing.Point(12, 42);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(242, 74);
+            this.panel1.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBoxCustomScale);
+            this.panel2.Controls.Add(this.radioButtonCustomScale);
+            this.panel2.Controls.Add(this.radioButtonAutoScale);
+            this.panel2.Controls.Add(this.checkBoxFullscreen);
+            this.panel2.Location = new System.Drawing.Point(12, 152);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(242, 74);
+            this.panel2.TabIndex = 19;
+            // 
+            // textBoxCustomScale
+            // 
+            this.textBoxCustomScale.Location = new System.Drawing.Point(142, 27);
+            this.textBoxCustomScale.Name = "textBoxCustomScale";
+            this.textBoxCustomScale.Size = new System.Drawing.Size(28, 23);
+            this.textBoxCustomScale.TabIndex = 2;
+            this.textBoxCustomScale.Text = "2";
+            this.textBoxCustomScale.TextChanged += new System.EventHandler(this.textBoxCustomScale_TextChanged);
+            // 
+            // radioButtonCustomScale
+            // 
+            this.radioButtonCustomScale.AutoSize = true;
+            this.radioButtonCustomScale.Location = new System.Drawing.Point(3, 28);
+            this.radioButtonCustomScale.Name = "radioButtonCustomScale";
+            this.radioButtonCustomScale.Size = new System.Drawing.Size(133, 19);
+            this.radioButtonCustomScale.TabIndex = 1;
+            this.radioButtonCustomScale.TabStop = true;
+            this.radioButtonCustomScale.Text = "Custom scale factor:";
+            this.radioButtonCustomScale.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAutoScale
+            // 
+            this.radioButtonAutoScale.AutoSize = true;
+            this.radioButtonAutoScale.Location = new System.Drawing.Point(3, 3);
+            this.radioButtonAutoScale.Name = "radioButtonAutoScale";
+            this.radioButtonAutoScale.Size = new System.Drawing.Size(191, 19);
+            this.radioButtonAutoScale.TabIndex = 0;
+            this.radioButtonAutoScale.TabStop = true;
+            this.radioButtonAutoScale.Text = "Automatically set window scale";
+            this.radioButtonAutoScale.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 132);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 15);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Window settings:";
             // 
             // Form_QuigSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(258, 284);
+            this.ClientSize = new System.Drawing.Size(266, 373);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonQuigBrowse);
             this.Controls.Add(this.textBoxQuigLocation);
             this.Controls.Add(this.label3);
@@ -178,10 +250,6 @@ namespace quig_ui
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkBoxFullscreen);
-            this.Controls.Add(this.radioButtonSoftware);
-            this.Controls.Add(this.radioButtonHardwareVSync);
-            this.Controls.Add(this.radioButtonHardware);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -189,6 +257,10 @@ namespace quig_ui
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "  quig settings";
             this.Load += new System.EventHandler(this.Form_QuigSettings_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,5 +280,11 @@ namespace quig_ui
         private System.Windows.Forms.Button buttonQuigBrowse;
         private System.Windows.Forms.TextBox textBoxQuigLocation;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton radioButtonAutoScale;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RadioButton radioButtonCustomScale;
+        private System.Windows.Forms.TextBox textBoxCustomScale;
     }
 }
